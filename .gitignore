@@ -1,3 +1,5 @@
+.DS_Store
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
@@ -15,3 +17,5 @@ coverage.out
 
 # IntelliJ
 .idea
+
+examples
