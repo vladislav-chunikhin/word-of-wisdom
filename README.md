@@ -2,6 +2,10 @@
 
 ## Overview
 
+The "Word of Wisdom" project combines secure server-client communication with the Proof of Work protocol to safeguard
+against DDoS attacks.
+Clients solve computational challenges to access quotes, ensuring a secure exchange.
+
 ## Docs
 
 - [Task description](docs/task.md)
@@ -21,6 +25,22 @@ sequenceDiagram
     Server -->> Client: If verified, send random quote
     Note over Client: Receive and process quote
 ```
+
+## Choice of Proof of Work Algorithm
+
+For securing the "Word of Wisdom" TCP server against DDoS attacks, we've chosen the Hashcash algorithm. This decision
+was based on its proven effectiveness in similar applications and its straightforward implementation. Below is a summary
+of Hashcash's key advantages and disadvantages that influenced our choice:
+
+| Advantages                                                                                         | Disadvantages                                                                                                |
+|----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| Simple to implement for server-client communication, doesn't require a central server.             | Requires clients to perform computational work, which could impact user experience on less powerful devices. |
+| Effectively counters automated spam and DDoS attacks by imposing a computational cost on requests. | The computational cost might need periodic adjustment to balance security with accessibility.                |
+
+This algorithm's ability to deter spam and mitigate DDoS risks by making them computationally expensive aligns with our
+project's goals. Choosing Hashcash implies the use of a CPU-dependent puzzle in our project. This is suitable for
+protection against DDoS attacks, as it requires significant computational effort from a potential attacker to send a
+large number of requests to the server.
 
 ## Getting started
 
