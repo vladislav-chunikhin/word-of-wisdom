@@ -1,0 +1,8 @@
+server:
+  log_level: DEBUG
+  address: :8080
+  keep_alive: 15s
+  deadline: 30s
+
+pow:
+  complexity: 2 # 2 bits of complexity
