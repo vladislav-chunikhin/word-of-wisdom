@@ -6,7 +6,7 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
-	"log"
+	"log/slog"
 	"time"
 )
 
@@ -68,7 +68,7 @@ func (p *PowProvider) CheckSolution(solution PowSolution) bool {
 func (s *PowSolver) FindNonce() (uint64, error) {
 	for nonce := uint64(0); nonce <= ^uint64(0); nonce++ {
 		if checkSolution(nonce, s.challenge, s.difficulty) {
-			log.Printf("nonce found: %d", nonce)
+			slog.Info("nonce found:", "nonce", nonce)
 			return nonce, nil
 		}
 	}

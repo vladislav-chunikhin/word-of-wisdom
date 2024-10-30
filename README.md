@@ -1,14 +1,15 @@
 # Word of Wisdom
 
-## Overview
+## Task
 
-The "Word of Wisdom" project combines secure server-client communication with the Proof of Work protocol to safeguard
-against DDoS attacks.
-Clients solve computational challenges to access quotes, ensuring a secure exchange.
+**Design and implement a “Word of Wisdom” tcp server**
 
-## Docs
-
-- [Task description](docs/task.md)
+- TCP server should be protected from DDOS attacks with the Proof of Work, the challenge-response protocol should be
+  used.
+- The choice of the POW algorithm should be explained
+- After Prof Of Work verification, server should send one of the quotes from “word of wisdom” book or any other
+  collection of the quotes
+- Docker file should be provided both for the server and for the client that solves the POW challenge
 
 ## Sequence diagram
 
@@ -41,6 +42,16 @@ This algorithm's ability to deter spam and mitigate DDoS risks by making them co
 project's goals. Choosing Hashcash implies the use of a CPU-dependent puzzle in our project. This is suitable for
 protection against DDoS attacks, as it requires significant computational effort from a potential attacker to send a
 large number of requests to the server.
+
+## Problems and possible solutions
+
+- TCP connection keep alive while waiting for solution from clients. It can be the reason of server stop.
+
+Solution: Close current tcp connection to free server resources, GRPC protocol can be used
+
+- Connection multi opening with one challenge in case of closing connection
+
+Solution: Store session of each client, delete challenge after usage
 
 ## Getting started
 
