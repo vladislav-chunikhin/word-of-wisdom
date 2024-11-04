@@ -2,6 +2,7 @@
 DOCKER_SERVER_IMAGE ?= word-of-wisdom-server
 DOCKER_CLIENT_IMAGE ?= word-of-wisdom-client
 DOCKER_TAG ?= latest
+APP_NAME ?= word-of-wisdom
 
 .PHONY: help
 all: help
