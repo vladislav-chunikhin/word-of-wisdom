@@ -19,11 +19,11 @@ test: ## Run tests
 
 .PHONY: docker-build-server
 docker-build-server: ## Build the Docker image for the server
-	docker build -t $(DOCKER_SERVER_IMAGE):$(DOCKER_TAG) -f Dockerfile.server .
+	docker build -t $(DOCKER_SERVER_IMAGE):$(DOCKER_TAG) -f build/server.Dockerfile .
 
 .PHONY: docker-build-client
 docker-build-client: ## Build the Docker image for the client
-	docker build -t $(DOCKER_CLIENT_IMAGE):$(DOCKER_TAG) -f Dockerfile.client .
+	docker build -t $(DOCKER_CLIENT_IMAGE):$(DOCKER_TAG) -f build/client.Dockerfile .
 
 .PHONY: docker-build-all
 docker-build-all: ## Build both server and client Docker images
