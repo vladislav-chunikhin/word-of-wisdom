@@ -1,0 +1,4 @@
+server_address: 127.0.0.1:8080
+rps: 5
+total_requests: 100
+log_level: DEBUG

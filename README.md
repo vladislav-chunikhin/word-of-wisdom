@@ -29,31 +29,25 @@ sequenceDiagram
 
 ## Choice of Proof of Work Algorithm
 
-For securing the "Word of Wisdom" TCP server against DDoS attacks, we've chosen the Hashcash algorithm. This decision
-was based on its proven effectiveness in similar applications and its straightforward implementation. Below is a summary
-of Hashcash's key advantages and disadvantages that influenced our choice:
+We will use Hashcash as the PoW algorithm. It is simple and widely used in scenarios where the server needs to limit
+client requests through computational effort.
 
-| Advantages                                                                                         | Disadvantages                                                                                                |
-|----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| Simple to implement for server-client communication, doesn't require a central server.             | Requires clients to perform computational work, which could impact user experience on less powerful devices. |
-| Effectively counters automated spam and DDoS attacks by imposing a computational cost on requests. | The computational cost might need periodic adjustment to balance security with accessibility.                |
-
-This algorithm's ability to deter spam and mitigate DDoS risks by making them computationally expensive aligns with our
-project's goals. Choosing Hashcash implies the use of a CPU-dependent puzzle in our project. This is suitable for
-protection against DDoS attacks, as it requires significant computational effort from a potential attacker to send a
-large number of requests to the server.
-
-## Problems and possible solutions
-
-- TCP connection keep alive while waiting for solution from clients. It can be the reason of server stop.
-
-Solution: Close current tcp connection to free server resources, GRPC protocol can be used
-
-- Connection multi opening with one challenge in case of closing connection
-
-Solution: Store session of each client, delete challenge after usage
+This approach is computationally challenging for the client, making it harder to flood the server with requests, thus
+mitigating DDoS attacks.
 
 ## Getting started
+
+To run the project, you can use the provided `docker-compose` file. This will start the server and client containers.
+
+```bash
+make up
+```
+
+To stop the containers, run:
+
+```bash
+make down
+```
 
 ## Resources
 

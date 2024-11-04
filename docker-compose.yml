@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: build/server.Dockerfile
+    image: word-of-wisdom-server:latest
+    container_name: word-of-wisdom-server
+    ports:
+      - "8090:8080" # Host:Container
+    environment:
+      - SERVER_CONFIG_FILE=config/template.server.yaml
+    networks:
+      - word_of_wisdom_network
+
+  client:
+    build:
+      context: .
+      dockerfile: build/client.Dockerfile
+    image: word-of-wisdom-client:latest
+    container_name: word-of-wisdom-client
+    depends_on:
+      - server
+    environment:
+      - CLIENT_CONFIG_FILE=config/template.client.yaml
+      - SERVER_ADDRESS=word-of-wisdom-server:8080
+    networks:
+      - word_of_wisdom_network
+
+networks:
+  word_of_wisdom_network:
+    driver: bridge

@@ -6,7 +6,8 @@ import (
 	"os"
 )
 
-func setLogger(logLevelAsStr string) {
+// SetLogger sets the logger for the application
+func SetLogger(logLevelAsStr string) {
 	logLevel := slog.LevelDebug
 	switch logLevelAsStr {
 	case "DEBUG":

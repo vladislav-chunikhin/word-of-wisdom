@@ -1,8 +1,0 @@
-go 1.21
-
-use (
-	client
-	lib-go
-	server
-	examples/word-of-wisdom-pos-golang
-)

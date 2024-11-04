@@ -1,0 +1,10 @@
+server:
+  log_level: DEBUG
+  address: :8080
+  worker_count: 10
+  shutdown_timeout: 10s
+
+pow:
+  complexity: 2
+  timeout: 5s
+
